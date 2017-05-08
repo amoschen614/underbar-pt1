@@ -31,4 +31,13 @@ describe('contains()', () => {
     expect(_.contains(ponies, 'Applejack')).toBe(false);
   });
 
+  it('returns true if an array of booleans of value false contains the target value false', () => {
+    const bools = [false, false, false];
+    expect(_.contains(bools, false)).toBe(true);
+  });
+
+  it('returns false if an array of integers does not contain the string representation target', () => {
+    const ints = [1, 2, 3, 4, 5];
+    expect(_.contains(ints, '3')).toBe(false);
+  });
 });
