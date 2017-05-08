@@ -13,4 +13,15 @@ describe('reduce()', () => {
     expect(result).toEqual(15);
   });
 
+  it('reduces an array of functions to a sum of their return values', () => {
+    const fns = [
+        function() { return 1; },
+        function() { return 2; },
+        function() { return 3; },
+        function() { return 4; },
+        function() { return 5; }
+    ];
+    const result = _.reduce(fns, (accumulator, retVal) => accumulator + retVal(), 0);
+    expect(result).toEqual(15);
+  });
 });
