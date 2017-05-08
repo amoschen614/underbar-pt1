@@ -39,5 +39,15 @@ describe('each()', () => {
     });
     expect(count).toBe(3);
   });
+
+  it('iterates every character of array-like string, passing the character, corresponding index, and the entire string to the callback', () => {
+    const str = 'string';
+    let count = 0;
+    _.each(str, (ch, i, str) => {
+      expect(ch).toEqual(str[i]);
+      count ++;
+    });
+    expect(count).toBe(6);
+  });
 });
 
