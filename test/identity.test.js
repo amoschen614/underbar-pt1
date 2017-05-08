@@ -20,4 +20,18 @@ describe('identity()', () => {
     };
     expect(_.identity(val)).toBe(val);
   });
+
+  it('returns the boolean when given a boolean', () => {
+    expect(_.identity(false)).toBe(false);
+  });
+
+  it('returns the same string when given a string', () => {
+    const str = 'hello';
+    expect(_.identity(str)).toBe(str);
+  });
+
+  it('returns the same function if given a function', () => {
+    const fn = function() { return 1 + 2; };
+    expect(_.identity(fn())).toBe(fn());
+  });
 });
