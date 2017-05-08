@@ -23,4 +23,36 @@ describe('filter()', () => {
     const abilityScores = _.filter(characterAttributes, (value) => !isNaN(value));
     expect(abilityScores).toEqual([4, 7, 10, 16, 5, 4]);
   });
+
+  it('filters an object to an array of non-object datatypes', () => {
+    const fn = function(a, b) { a + b; }
+    const misc = {
+      num: 1, 
+      str: 'a', 
+      arr: [1, 2], 
+      obj: {1: 'a'}, 
+      func: fn, 
+      bool: false, 
+      undef: undefined, 
+      null: null
+    };
+    const nonObjs = _.filter(misc, (value) => typeof value !== 'object');
+    expect(nonObjs).toEqual([1, 'a', fn, false, undefined])
+  });
+
+  it('filters an array of numbers to prime numbers', () => {
+    let nums = [];
+    for (let num = 2; num < 100; num++) {
+      nums.push(num);
+    }
+
+    const primes = _.filter(nums, (num) => {
+      let isPrime = true;
+      for (let i = 2; i < num; i++) {
+        isPrime = isPrime && (num % i !== 0);
+      }
+      return isPrime;
+    });
+    expect(primes).toEqual([2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]);
+  });
 });
