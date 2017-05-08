@@ -16,6 +16,21 @@ describe('every()', () => {
       const nums = [1, 3, 5, 6, 7];
       expect(_.every(nums, num => num % 2 === 1)).toBe(false);
     });
+});
+  
+  describe('processing other datatypes', () => {
+    it('returns true if all the entries in an array are objects and we test for object datatypes', () => {
+      const objs = [{}, {}, {}, {}, {}];
+      expect(_.every(objs, obj => typeof obj === 'object')).toBe(true);
+    });
 
+    it('returns true if every property value in an object has a non-negative length and we test for their lengths', () => {
+      const obj = {
+        str: 'string',
+        fn: function() { return true; },
+        arr: [1, 2, 3]
+      };
+      expect(_.every(obj, propVal => propVal.length >= 0)).toBe(true);
+    });
   });
 });
