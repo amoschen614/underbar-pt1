@@ -18,4 +18,19 @@ describe('isArrayLike()', () => {
     };
     expect(_.isArrayLike(nonArrayLikeObj)).toBe(false);
   });
+
+  it('returns true for a string', () => {
+    const str = 'string';
+    expect(_.isArrayLike(str)).toBe(true);
+  });
+
+  it('returns true for a function', () => {
+    const fn = function() { return null };
+    expect(_.isArrayLike(fn)).toBe(true);
+  });
+
+  it('returns false for a built-in Date object', () => {
+    const date = new Date();
+    expect(_.isArrayLike(date)).toBe(false);
+  });
 });
