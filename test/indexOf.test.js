@@ -26,4 +26,13 @@ describe('indexOf()', () => {
     expect(_.indexOf(arr, 'bar', 2)).toBe(3);
   });
 
+  it('returns -1 if given offset is greater than length of array', () => {
+    const arr = ['foo', 'bar', 'baz'];
+    expect(_.indexOf(arr, 'baz', 3)).toBe(-1);
+  });
+
+  it('returns -1 if given offset is greater than last occurence of target', () => {
+    const arr = ['foo', 'bar', 'baz'];
+    expect(_.indexOf(arr, 'foo', 1)).toBe(-1);
+  });
 });
