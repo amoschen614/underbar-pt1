@@ -16,4 +16,9 @@ describe('map()', () => {
     const mappedArr = _.map(arr, (fn) => fn(3, 2));
     expect(mappedArr).toEqual([5, 6, 1, '3, 2']);
   });
+  it('maps every element in an array to itself using the default callback argument', () => {
+    const arr = ["abc", true, function() { return 3; }];
+    const mappedArr = _.map(arr);
+    expect(mappedArr).toEqual(arr);
+  });
 });
